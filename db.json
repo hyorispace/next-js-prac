@@ -1,0 +1,165 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nickname": "츄르",
+      "birthday": "2005-06-28",
+      "sex": "m",
+      "isDeleted": false
+    },
+    {
+      "id": 2,
+      "nickname": "VIARO",
+      "birthday": "1991-08-01",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 3,
+      "nickname": "CUAUHTEMOC",
+      "birthday": "2017-04-16",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 4,
+      "nickname": "칸즈",
+      "birthday": "2009-06-29",
+      "sex": "m",
+      "isDeleted": true
+    },
+    {
+      "id": 5,
+      "nickname": "레토제네스",
+      "birthday": "1983-07-04",
+      "sex": "w",
+      "isDeleted": true
+    },
+    {
+      "id": 6,
+      "nickname": "ANTIPHUS",
+      "birthday": "2009-10-12",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 7,
+      "nickname": "FROLIO",
+      "birthday": "1997-11-29",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 8,
+      "nickname": "GASPAR",
+      "birthday": "1988-08-01",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 9,
+      "nickname": "ALEKSY",
+      "birthday": "2009-10-12",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 10,
+      "nickname": "THOMASSE",
+      "birthday": "1999-08-27",
+      "sex": "m",
+      "isDeleted": false
+    },
+    {
+      "id": 11,
+      "nickname": "베가",
+      "birthday": "1978-01-16",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 12,
+      "nickname": "루키아",
+      "birthday": "1998-08-07",
+      "sex": "w",
+      "isDeleted": true
+    },
+    {
+      "id": 13,
+      "nickname": "루시안",
+      "birthday": "2015-06-29",
+      "sex": "m",
+      "isDeleted": true
+    },
+    {
+      "id": 14,
+      "nickname": "CALZOLARIUS",
+      "birthday": "2007-05-29",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 15,
+      "nickname": "라피우스",
+      "birthday": "2010-08-15",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 16,
+      "nickname": "ERVARIUS",
+      "birthday": "2017-06-12",
+      "sex": "m",
+      "isDeleted": false
+    },
+    {
+      "id": 17,
+      "nickname": "TLACYELEL",
+      "birthday": "2013-02-11",
+      "sex": "m",
+      "isDeleted": false
+    },
+    {
+      "id": 18,
+      "nickname": "타앙",
+      "birthday": "1971-01-15",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 19,
+      "nickname": "LEHTONEN",
+      "birthday": "1996-05-07",
+      "sex": "m",
+      "isDeleted": false
+    },
+    {
+      "id": 20,
+      "nickname": "CLEMENT",
+      "birthday": "1986-07-24",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 21,
+      "nickname": "라이덴",
+      "birthday": "2004-09-13",
+      "sex": "w",
+      "isDeleted": false
+    },
+    {
+      "id": 22,
+      "nickname": "BALINT",
+      "birthday": "2016-05-26",
+      "sex": "m",
+      "isDeleted": false
+    },
+    {
+      "id": 23,
+      "nickname": "프톨레메오스",
+      "birthday": "1979-07-21",
+      "sex": "m",
+      "isDeleted": false
+    }
+  ]
+}
