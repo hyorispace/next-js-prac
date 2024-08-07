@@ -1,32 +1,31 @@
 import { useGetDeletedUserList, userQueries } from "@/services/userService";
-import {
-  dehydrate,
-  DehydratedState,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query";
-import { NextPage } from "next";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 import Head from "next/head";
 import styled from "styled-components";
+import { ImgComparisonSlider } from "@img-comparison-slider/react";
 
-interface DeleteProps {
-  dehydratedState: DehydratedState;
-}
-
-const Delete: NextPage<DeleteProps> = ({ dehydratedState }) => {
+const Delete = () => {
   const { data } = useGetDeletedUserList();
 
   console.log(data);
 
   return (
-    <HydrationBoundary state={dehydratedState}>
-      <Container>
-        <Head>
-          <title>delete 페이지</title>
-        </Head>
-        <>Delete 페이지</>
-      </Container>
-    </HydrationBoundary>
+    <Container>
+      <Head>
+        <title>delete 페이지</title>
+      </Head>
+      <>Delete 페이지</>
+      <ImgComparisonSlider>
+        <img
+          slot="first"
+          src="https://img-comparison-slider.sneas.io/demo/images/before.webp"
+        />
+        <img
+          slot="second"
+          src="https://img-comparison-slider.sneas.io/demo/images/after.webp"
+        />
+      </ImgComparisonSlider>
+    </Container>
   );
 };
 
