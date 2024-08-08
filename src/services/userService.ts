@@ -1,6 +1,10 @@
 import apiClient from "@/api/apiClient";
 import { User } from "@/types/user";
 import {
+  createQueryKeys,
+  createQueryKeyStore,
+} from "@lukemorales/query-key-factory";
+import {
   queryOptions,
   useMutation,
   useQuery,
@@ -22,8 +26,8 @@ const getUserList = async (params: UserParams): Promise<User[]> => {
   return response.data;
 };
 
-const getDeletedUserList = async (): Promise<User[]> => {
-  const response = await apiClient.get("/users", {
+export const getDeletedUserList = async (): Promise<User[]> => {
+  const response = await apiClient.get("http://localhost:9000/users", {
     params: {
       _sort: "id",
       _order: "desc",
@@ -54,19 +58,28 @@ const restoreUser = async (id: number) => {
   return response.data;
 };
 
-export const userQueries = {
-  default: () => ["user"],
-  all: (params: UserParams) =>
-    queryOptions({
-      queryKey: [...userQueries.default(), "not-deleted", params],
-      queryFn: () => getUserList(params),
-    }),
-  deleted: () =>
-    queryOptions({
-      queryKey: [...userQueries.default(), "deleted"],
-      queryFn: getDeletedUserList,
-    }),
-};
+// export const userQueries = {
+//   default: () => ["user"],
+//   all: (params: UserParams) =>
+//     queryOptions({
+//       queryKey: [...userQueries.default(), "not-deleted", params],
+//       queryFn: () => getUserList(params),
+//     }),
+//   deleted: () =>
+//     queryOptions({
+//       queryKey: [...userQueries.default(), "deleted"],
+//       queryFn: getDeletedUserList,
+//     }),
+// };
+
+export const userQueries = createQueryKeys("user", {
+  default: null,
+  all: (params: UserParams) => ({
+    queryKey: ["not-deleted", params],
+    queryFn: () => getUserList(params),
+  }),
+  deleted: () => ({ queryKey: ["deleted"], queryFn: getDeletedUserList }),
+});
 
 export const useGetUserList = (params: UserParams) => {
   return useQuery(userQueries.all(params));

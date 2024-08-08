@@ -1,12 +1,28 @@
 import { useGetDeletedUserList, userQueries } from "@/services/userService";
-import { dehydrate, QueryClient } from "@tanstack/react-query";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 import Head from "next/head";
 import styled from "styled-components";
 import { ImgComparisonSlider } from "@img-comparison-slider/react";
+import { GetServerSideProps } from "next";
+
+export const getServerSideProps = (async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(userQueries.deleted());
+
+  return {
+    props: {
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+    },
+  };
+}) satisfies GetServerSideProps;
 
 const Delete = () => {
   const { data } = useGetDeletedUserList();
-
   console.log(data);
 
   return (
@@ -27,25 +43,6 @@ const Delete = () => {
       </ImgComparisonSlider>
     </Container>
   );
-};
-
-export const getStaticProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(userQueries.deleted());
-
-  const prefetchedData = queryClient.getQueryData(
-    userQueries.deleted().queryKey
-  );
-  console.log("Prefetched data:", prefetchedData);
-
-  // 여기에서 데이터 페칭을 못함
-
-  return {
-    props: {
-      dehydrateState: dehydrate(queryClient),
-    },
-  };
 };
 
 export default Delete;

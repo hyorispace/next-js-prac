@@ -12,17 +12,26 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000,
+          },
+        },
+      })
+  );
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Header />
         <HydrationBoundary state={pageProps.dehydratedState}>
+          <GlobalStyle />
+          <Header />
           <Component {...pageProps} />
+          <ReactQueryDevtools initialIsOpen={false} />
         </HydrationBoundary>
-        <ReactQueryDevtools initialIsOpen={false} />
       </ThemeProvider>
     </QueryClientProvider>
   );
