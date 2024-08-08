@@ -34,6 +34,13 @@ export const getStaticProps = async () => {
 
   await queryClient.prefetchQuery(userQueries.deleted());
 
+  const prefetchedData = queryClient.getQueryData(
+    userQueries.deleted().queryKey
+  );
+  console.log("Prefetched data:", prefetchedData);
+
+  // 여기에서 데이터 페칭을 못함
+
   return {
     props: {
       dehydrateState: dehydrate(queryClient),
