@@ -1,15 +1,14 @@
 import { useGetDeletedUserList, userQueries } from "@/services/userService";
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 import Head from "next/head";
 import styled from "styled-components";
 import { ImgComparisonSlider } from "@img-comparison-slider/react";
 import { GetServerSideProps } from "next";
+import apiClient from "@/api/apiClient";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
-export const getServerSideProps = (async () => {
+export const getServerSideProps = (async (ctx) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(userQueries.deleted());
@@ -17,6 +16,7 @@ export const getServerSideProps = (async () => {
   return {
     props: {
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+      ...(await serverSideTranslations(ctx.locale ?? "en", ["common"])),
     },
   };
 }) satisfies GetServerSideProps;
@@ -24,6 +24,16 @@ export const getServerSideProps = (async () => {
 const Delete = () => {
   const { data } = useGetDeletedUserList();
   console.log(data);
+  const { t } = useTranslation("common");
+
+  apiClient.get("https://user-list-server.vercel.app/users", {
+    onDownloadProgress(progressEvent) {
+      console.log(progressEvent);
+    },
+    onUploadProgress(progressEvent) {
+      console.log(progressEvent);
+    },
+  });
 
   return (
     <Container>
